@@ -1,0 +1,83 @@
+extends layout.pug
+block content
+  +navbar("offre")
+  #offer-page
+    h1.screen-title Offres
+    .screen-description
+      |Tous les projets n'ont pas les mêmes besoins, nous proposons donc plusieurs formules, pour mieux adapter notre méthodologie à votre situation.
+
+    .formulas-list
+      .project-box
+        .pure-g
+          .pure-u-1.pure-u-md-1-2
+            .project-img-container
+              img(src="https://images.pexels.com/photos/6224/hands-people-woman-working.jpg?w=940&h=650&auto=compress&cs=tinysrgb")
+          .pure-u-1.pure-u-md-1-2
+            .project-text-container
+              .project-title Atelier Design Thinking 
+              .project-description 
+                |Format: 1 journée
+                br
+                |Utilisation d'une méthodologie centrée sur l'analyse des besoins pour passer d'une idée large à des solutions pertinentes.
+
+
+      .project-box
+        .pure-g
+          .pure-u-1.pure-u-md-1-2
+            .project-img-container
+              img(src="https://www.sportbuzzbusiness.fr/wp-content/uploads/2016/10/hackathon.jpg")
+          .pure-u-1.pure-u-md-1-2
+            .project-text-container
+              .project-title Hackathon
+              .project-description
+                |Format: 24h ou 48h
+                br
+                |En mode "sprint", nous créons un prototype fonctionnel de la solution, et début des tests utilisateurs.
+
+      .project-box
+        .pure-g
+          .pure-u-1.pure-u-md-1-2
+            .project-img-container
+              img(src="https://static1.squarespace.com/static/5193ac7de4b0f3c8853ae813/5194e45be4b0dc6d4010952e/5582caa3e4b04338d123fdac/1434634919158//img.jpg")
+          .pure-u-1.pure-u-md-1-2
+            .project-text-container
+              .project-title Développement d'une première version
+              .project-description 
+                |Format: 1 mois
+                br
+                |Nous développons votre idée comme si c'était notre startup: étude du besoin, conception, développement d'une V1 minimale, tests utilisateurs, et mise sur le marché.
+
+    .btn-cont
+      button.btn 
+        a(href="projets.html") Voir nos réalisations
+      |&nbsp;&nbsp;
+      button.btn
+        a(href="https://dbaruchel.typeform.com/to/ERD4by" target="_blank") Je me lance
+
+
+  //- section#home-screen-5
+  //-   .pure-g
+  //-     .pure-u-1.pure-u-md-1-2
+  //-       .screen-content
+  //-         .pb-title Entrepreneur ?
+  //-         .pb-description 
+  //-           |Peu de ressources ?
+  //-           br
+  //-           |Pas les compétences pour tout faire tout seul ?
+  //-           br
+  //-           |On connaît :)
+  //-           br
+  //-           |Pas besoin d’un CTO, d’un designer, et d’une armée de codeurs pour avancer…
+  //-         .solution-box
+  //-           |Nous vous aidons à formaliser votre idée et à la réaliser pour que vous la testiez rapidement.
+
+
+  //-     .pure-u-1.pure-u-md-1-2
+  //-       .screen-content
+  //-         .pb-title Intrapreneur ?
+  //-         .pb-description
+  //-           |Une idée ? 
+  //-           br
+  //-           |Votre entreprise ne débloquera pas de gros budget sans preuve de concept ?
+  //-           br
+  //-           |Pourquoi payer pour des fonctionnalités complexes et chères, sans s’assurer qu’elles sont utiles ?

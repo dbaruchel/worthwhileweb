@@ -1,0 +1,57 @@
+mixin scriptsHeaders(sources)
+  <!--[if lte IE 9]>
+  each source in sources
+    script(src=source)
+  <![endif]-->
+  <!--[if gt IE 9 | !IE ]><!-->
+  each source in sources
+    script(src=source defer)
+  <!--<![endif]-->
+
+head
+  meta(charset="UTF-8")
+  meta(content="text/html; charset=utf-8" http-equiv="Content-Type")
+  meta(name="viewport" content="user-scalable=no, initial-scale=1, minimal-ui, maximum-scale=1, minimum-scale=1")
+  title WorthWhileWeb — Better ways to spend your time on the Web
+  meta(name="description" content="Find better ways to spend your time on the Web")
+  meta(name="keywords" content="Web, Culture, Interesting, Spend time, Learn, Discover, Explore")
+
+  //- TAGS FACEBOOK
+  //- meta(property="og:url" content="https://www.monsieurbarbier.com/")
+  meta(property="og:type" content="website")
+  meta(property="og:title" content="WorthWhileWeb")
+  meta(property="og:image" content="http://kalys-solutions.com/wp-content/uploads/2016/04/Innovation_Mission-possible.jpg")
+  meta(property="og:description" content="Find better ways to spend your time on the Web")
+
+  //- TAGS TWITTER
+  meta(name="twitter:card" content="summary_large_image")
+  //- meta(name="twitter:site" content="@MonsieurBarbier")
+  //- meta(name="twitter:creator" content="@MonsieurBarbier")
+  meta(name="twitter:title" content="WorthWhileWeb")
+  meta(name="twitter:description" content="Find better ways to spend your time on the Web")
+  meta(name="twitter:image" content="http://kalys-solutions.com/wp-content/uploads/2016/04/Innovation_Mission-possible.jpg")
+
+  //- FAVICON
+  link(href="favicon.ico" rel="shortcut icon" type="image/x-icon")
+  link(href="favicon.ico" rel="icon" type="image/x-icon")
+
+  //- FONTS
+  link(href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet")
+  //- link(href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet")
+  link(rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css")
+
+  //- LIBRAIRIES
+  link(rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css")
+  //- [if lte IE 8]
+    link(rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-old-ie-min.css")
+  //- [endif]
+  //- [if gt IE 8]
+  link(rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css")
+  //- [endif]
+
+  //- STYLESHEETS
+  link(rel = "stylesheet" href = "style/style.css")
+
+  //- SCRIPTS
+  - var jsSources = ['js/jquery.min.js', 'js/app.js']
+  +scriptsHeaders(jsSources)

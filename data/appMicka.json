@@ -1,0 +1,18 @@
+{
+  "headerDescription": "Find better ways to enrich your knowledge with online information.",
+  "descriptionText": "We're so flooded with information, we can't build knowledge from it.<br/><br/>Worthwhile Web is a collection of experiments that help you burst this filter bubble.",
+  "useColumns": true,
+  "leftTitle": "What...",
+  "leftPoints": [
+    "Feeds hook us into what we already like, when we don't need it.",
+    "The Web is amazing at promoting particular cultural niches.",
+    "True discovery, learning and memorization requires time, effort and mindset."
+  ],
+  "rightTitle": "...if?",
+  "rightPoints": [
+    "Are we wasting time ?",
+    "Could it be that good at breaching barriers between these niches ?",
+    "What environment and education can we provide to improve this ?"
+  ],
+  "buttonText": "Join the Movement"
+}

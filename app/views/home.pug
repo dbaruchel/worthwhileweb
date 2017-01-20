@@ -4,18 +4,25 @@ block content
   section#home-screen-1
     .screen-container
       .pure-g
-        .pure-u-1-2
-          .description-text
-            |True discovery on the web is dead:
-            br
-            |Everywhere, filters personalize your experience to show you content you already like.
-            br
-            br
-            |Worthwhile Web is a collection of experiments that help you burst this filter bubble.
-        .pure-u-1-2
-          .btn-cont
-            button.btn
-              a(href="https://dbaruchel.typeform.com/to/ERD4by" target="_blank") Join the Movement
+        if app.useColumns
+          .pure-u-1.pure-u-md-1-2
+            .description-text
+              span(style="margin-left: 1.2em;")!=app.leftTitle
+              ul.fa-ul
+                each point in app.leftPoints
+                  li #[i.fa-li.fa.fa-bolt] !{point}
+          .pure-u-1.pure-u-md-1-2
+            .description-text
+              span!=app.rightTitle
+              ul.fa-ul
+              each point in app.rightPoints
+                li !{point}
+        else
+          .pure-u-1
+            .description-text!=app.descriptionText
+      .btn-cont
+        button.btn
+          a(href="https://dbaruchel.typeform.com/to/ERD4by" target="_blank")!=app.buttonText
 
   section#home-screen-6
     h1.screen-title Experiments

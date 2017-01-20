@@ -6,9 +6,10 @@ module.exports = function(grunt) {
         options: {
           pretty: true,
           data: {
-            projects: grunt.file.readJSON('projects.json'),
-            missions: grunt.file.readJSON('missions.json'),
-            teammates: grunt.file.readJSON('team.json'),
+            app: grunt.file.readJSON('data/appMicka2.json'),
+            projects: grunt.file.readJSON('data/projects.json'),
+            missions: grunt.file.readJSON('data/missions.json'),
+            teammates: grunt.file.readJSON('data/team.json'),
           }
         },
         files: {
@@ -35,9 +36,15 @@ module.exports = function(grunt) {
       }
     },
     watch: {
-      grunt: { files: ['Gruntfile.js'] },
+      grunt: { files: [
+        'Gruntfile.js'
+      ] },
       pug: {
-        files: 'app/views/**/*.pug',
+        files: [
+          'Gruntfile.js',
+          'app/views/**/*.pug',
+          'data/*.json'
+        ],
         tasks: ['pug']
       },
       sass: {

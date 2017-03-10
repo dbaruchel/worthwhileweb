@@ -7,16 +7,17 @@ module.exports = function(grunt) {
           pretty: true,
           data: {
             app: grunt.file.readJSON('data/appMicka2.json'),
-            projects: grunt.file.readJSON('data/projects.json'),
+            initiatives: grunt.file.readJSON('data/initiatives.json'),
             missions: grunt.file.readJSON('data/missions.json'),
             teammates: grunt.file.readJSON('data/team.json'),
           }
         },
         files: {
           'build/index.html': 'app/views/home.pug',
-          'build/offre.html': 'app/views/offer.pug',
+          'build/collection.html': 'app/views/collection.pug',
           'build/projets.html': 'app/views/projects.pug',
           'build/equipe.html': 'app/views/team.pug',
+          'build/initiative.html': 'app/views/initiative.pug',
         }
       }
     },

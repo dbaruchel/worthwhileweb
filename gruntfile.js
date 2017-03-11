@@ -31,12 +31,21 @@ module.exports = function(grunt) {
     copy: {
       build: {
         cwd: 'app',
-        src: [ 'js/*','style/*.css', '!**/*.pug', 'assets/**'],
+        src: [ 
+          'js/*',
+          'style/*.css', 
+          // '!**/*.pug', 
+          'assets/**'
+        ],
         dest: 'build',
         expand: true
       }
     },
     watch: {
+      copy: {
+        files: ['app/js/*.js', 'app/assets/*'],
+        tasks: ['copy:build'],
+      },
       grunt: { files: [
         'Gruntfile.js'
       ] },
@@ -52,6 +61,22 @@ module.exports = function(grunt) {
         files: 'app/style/sass/style.scss',
         tasks: ['sass']
       }
+    },
+    browserSync: {
+      dev: {
+        bsFiles: {
+          src : [
+            'build/assets/*',
+            'build/js/*.js',
+            'build/style/*.css',
+            'build/*.html'
+          ]
+        },
+        options: {
+          watchTask: true,
+          server: './build'
+        }
+      }
     }
   });
   // These plugins provide necessary tasks.
@@ -59,6 +84,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks("grunt-contrib-copy");
+  grunt.loadNpmTasks('grunt-browser-sync');
   // Default task.
-  grunt.registerTask('default',['pug', 'sass', 'copy', 'watch']);
+  // grunt.registerTask('default',['pug', 'sass', 'copy', 'watch']);
+  // grunt.registerTask('build',['pug', 'sass', 'copy']);
+  // define default task
+  grunt.registerTask('default', ['pug', 'sass', 'copy', 'browserSync', 'watch', ]);
 };

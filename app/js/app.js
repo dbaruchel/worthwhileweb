@@ -10,6 +10,15 @@ $(document).ready(function() {
     } else {
         $('nav').removeClass('sticky-nav');
         $('body').css('margin-top','0px');
+        console.log('yolo');
+        console.log('yolo');
+        console.log('yolo');
+        console.log('yolo');
+        console.log('yolo');
+        console.log('yolo');
+        console.log('yolo');
+        console.log('yolo');
+        console.log('yolo');
     }
   };
    

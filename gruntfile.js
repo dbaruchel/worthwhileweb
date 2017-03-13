@@ -92,4 +92,6 @@ module.exports = function(grunt) {
   grunt.registerTask('metal', ['grunt-www-metalsmith']);
   // define default task
   grunt.registerTask('default', ['grunt-www-metalsmith', 'clean', 'copy', 'sass','browserSync', 'watch']);
+
+  grunt.registerTask('build', ['grunt-www-metalsmith', 'clean', 'copy', 'sass']);
 };

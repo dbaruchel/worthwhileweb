@@ -1,75 +1,47 @@
+// Great sample file of a gruntfile with metalsmith
+// Also great example of a whole custom static site gen with react
+// https://github.com/dbushell/dbushell.com
+// https://github.com/dbushell/dbushell.com/blob/v8/gruntfile.js
+
 module.exports = function(grunt) {
+  grunt.loadTasks('tasks');
+  // These plugins provide necessary tasks.
+
+  grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-browser-sync');
+
   // Project configuration.
   grunt.initConfig({
-    pug: {
-      compile: {
-        options: {
-          pretty: true,
-          data: {
-            app: grunt.file.readJSON('data/appMicka2.json'),
-            initiatives: grunt.file.readJSON('data/initiatives.json'),
-            missions: grunt.file.readJSON('data/missions.json'),
-            teammates: grunt.file.readJSON('data/team.json'),
-          }
-        },
-        files: {
-          'build/index.html': 'app/views/home.pug',
-          'build/collection.html': 'app/views/collection.pug',
-          'build/projets.html': 'app/views/projects.pug',
-          'build/equipe.html': 'app/views/team.pug',
-          'build/initiative.html': 'app/views/initiative.pug',
-        }
-      }
-    },
     sass: {
       dist: {
-        files: {
-          'build/style/style.css' : 'app/style/sass/style.scss'
-        }
+        files: [{
+          expand: true,
+          cwd: 'metal-build',
+          src: ['**/*.scss'],
+          dest: 'build/',
+          ext: '.css'
+       }]
       }
     },
     copy: {
       build: {
-        cwd: 'app',
+        cwd: 'metal-build',
         src: [ 
           'js/*',
           'style/*.css', 
-          // '!**/*.pug', 
           'assets/**'
         ],
         dest: 'build',
         expand: true
       }
     },
-    watch: {
-      copy: {
-        files: ['app/js/*.js', 'app/assets/*'],
-        tasks: ['copy:build'],
-      },
-      grunt: { files: [
-        'Gruntfile.js'
-      ] },
-      pug: {
-        files: [
-          'Gruntfile.js',
-          'app/views/**/*.pug',
-          'data/*.json'
-        ],
-        tasks: ['pug']
-      },
-      sass: {
-        files: 'app/style/sass/style.scss',
-        tasks: ['sass']
-      }
-    },
     browserSync: {
       dev: {
         bsFiles: {
           src : [
-            'build/assets/*',
-            'build/js/*.js',
-            'build/style/*.css',
-            'build/*.html'
+            'build/*'
           ]
         },
         options: {
@@ -77,17 +49,36 @@ module.exports = function(grunt) {
           server: './build'
         }
       }
-    }
+    },
+    "grunt-www-metalsmith" : {
+      'all': {
+        options: {
+          clean: true,
+          metadata: {
+            title: 'WorthWhileWeb',
+            description: 'Find better ways to spend your time on the web.'
+          },
+          src: 'src',
+          dest: 'metal-build'
+        }
+      }
+    },
+    watch: {
+      "rebuild-metal": {
+        files: ['Gruntfile.js', 'tasks/*', 'src/*', 'layouts/*'],
+        tasks: ['grunt-www-metalsmith']
+      },
+      "rebuild": {
+        files: ['metal-build/*'],
+        tasks: ['copy', 'sass']
+      },
+      grunt: { files: [
+        'Gruntfile.js'
+      ] },
+    },
   });
-  // These plugins provide necessary tasks.
-  grunt.loadNpmTasks('grunt-contrib-pug');
-  grunt.loadNpmTasks('grunt-contrib-sass');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks("grunt-contrib-copy");
-  grunt.loadNpmTasks('grunt-browser-sync');
-  // Default task.
-  // grunt.registerTask('default',['pug', 'sass', 'copy', 'watch']);
-  // grunt.registerTask('build',['pug', 'sass', 'copy']);
+
+  grunt.registerTask('metal', ['grunt-www-metalsmith']);
   // define default task
-  grunt.registerTask('default', ['pug', 'sass', 'copy', 'browserSync', 'watch', ]);
+  grunt.registerTask('default', ['grunt-www-metalsmith', 'sass', 'copy', 'browserSync', 'watch']);
 };

@@ -1,0 +1,26 @@
+mixin navbar(route)
+  nav
+    ul
+      li
+        a(href="index.html" class= route ==="index" ? "active" : "")
+          |#[i.fa.fa-home]&nbsp; Home
+      li
+        a(href="collection.html" class= route ==="collection" ? "active" : "")
+          |#[i.fa.fa-database]&nbsp; Collection
+      li
+        a(href="projets.html" class= route ==="projets" ? "active" : "")
+          |#[i.fa.fa-lightbulb-o]&nbsp; Browse Better
+      li
+        a(href="equipe.html" class= route ==="equipe" ? "active" : "")
+          |#[i.fa.fa-graduation-cap]&nbsp; Go Further
+      li
+        a(href="offre.html" class= route ==="offre" ? "active" : "")
+          |#[i.fa.fa-flask]&nbsp; Experiments
+    
+    a.contact(style="float:right;" href="" target="_blank") Contact
+
+header
+  .header-text
+    h1.header-title WorthWhileWeb
+      //- |#[span.name-w W]#[span orth]#[span.name-w W]#[span hile]#[span.name-w W]#[span eb]
+    h2.header-description=description

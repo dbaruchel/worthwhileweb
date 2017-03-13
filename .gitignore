@@ -1,5 +1,5 @@
 .sass-cache/
 npm-debug.log
 node_modules/
-build/
+build/*
 metal-build/

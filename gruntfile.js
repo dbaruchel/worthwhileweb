@@ -11,9 +11,13 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-browser-sync');
+  grunt.loadNpmTasks('grunt-contrib-clean');
 
   // Project configuration.
   grunt.initConfig({
+    clean: {
+      build: ['build/*']
+    },
     sass: {
       dist: {
         files: [{
@@ -31,7 +35,8 @@ module.exports = function(grunt) {
         src: [ 
           'js/*',
           'style/*.css', 
-          'assets/**'
+          'assets/**',
+          '**/*.html'
         ],
         dest: 'build',
         expand: true
@@ -56,7 +61,7 @@ module.exports = function(grunt) {
           clean: true,
           metadata: {
             title: 'WorthWhileWeb',
-            description: 'Find better ways to spend your time on the web.'
+            description: 'Find better ways to spend your time on the web.',
           },
           src: 'src',
           dest: 'metal-build'
@@ -70,7 +75,7 @@ module.exports = function(grunt) {
       },
       "rebuild": {
         files: ['metal-build/*'],
-        tasks: ['copy', 'sass']
+        tasks: ['clean','copy', 'sass']
       },
       grunt: { files: [
         'Gruntfile.js'
@@ -80,5 +85,5 @@ module.exports = function(grunt) {
 
   grunt.registerTask('metal', ['grunt-www-metalsmith']);
   // define default task
-  grunt.registerTask('default', ['grunt-www-metalsmith', 'sass', 'copy', 'browserSync', 'watch']);
+  grunt.registerTask('default', ['grunt-www-metalsmith', 'clean', 'copy', 'sass','browserSync', 'watch']);
 };

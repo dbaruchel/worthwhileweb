@@ -6,6 +6,7 @@ var Metalsmith  = require('metalsmith'),
     ms_markdown = require('metalsmith-markdown'),
     ms_layouts = require('metalsmith-layouts'),
     ms_permalinks = require('metalsmith-permalinks'),
+    ms_links = require('metalsmith-relative-links'),
 
     ms_collections = require('metalsmith-collections'),
     ms_pagination  = require('metalsmith-pagination'),
@@ -13,6 +14,7 @@ var Metalsmith  = require('metalsmith'),
 
     ms_debug = require('metalsmith-debug');
 
+var _ = require('underscore');
     // ms_feed        = require('metalsmith-feed'),
     // ms_drafts      = require('metalsmith-drafts'),
     // ms_branch      = require('metalsmith-branch'),
@@ -27,6 +29,18 @@ var Metalsmith  = require('metalsmith'),
     // fs          = require('fs'),
     // path        = require('path'),
     // striptags   = require('striptags');
+    // 
+Helpers = {
+    capitalize: function(text) { return text.toUpperCase(); },
+    groupBy: function(list, number) {
+        var lists = _.groupBy(list, function(element, index){
+          return Math.floor(index / number);
+        });
+        lists = _.toArray(lists);
+        return lists;
+    },
+    swag: 'SWAG',
+};
 
 module.exports = plugin;
 
@@ -54,7 +68,11 @@ function plugin(grunt)
 
         metalsmith.source(options.src);
         metalsmith.destination(options.dest);
-        metalsmith.metadata(options.metadata);
+        metalsmith.metadata(_.extend(
+            options.metadata,{
+                helpers: Helpers,
+            }
+        ));
 
 
         // // not sure if this actually fixes the ulimit issue...
@@ -76,10 +94,6 @@ function plugin(grunt)
             }
         }))
 
-
-
-
-
         .use(ms_permalinks({
             // original options would act as the keys of a `default` linkset, 
             pattern: ':title',
@@ -88,10 +102,12 @@ function plugin(grunt)
             // each linkset defines a match, and any other desired option
             linksets: [{
                 match: { collection: 'initiatives' },
-                pattern: 'initiatives/:date/:title',
-                date: 'mmddyy'
+                pattern: 'initiatives/:title',
+                // date: 'mmddyy'
             }]
         }))
+
+        .use(ms_links())
 
         .use(ms_debug())
 
@@ -99,7 +115,6 @@ function plugin(grunt)
             engine: 'pug',
             directory: 'layouts'
         }));
-
 
         metalsmith.build(function(err) {
             if (err) {

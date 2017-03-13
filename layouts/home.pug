@@ -6,18 +6,12 @@ block content
       .pure-g
         .pure-u-1.pure-u-md-1-2
           .description-text
-            .question
-              |We've heard these too many times!!...
+            .question We've heard these too many times!!...
             ul.fa-ul
-              li #[i.fa-li.fa.fa-comment] So many buzz news that we can't remember what's important.
-              li #[i.fa-li.fa.fa-comment] So many disturbing notifications that we can't focus on learning.
-              li #[i.fa-li.fa.fa-comment] So many personalized filters that we can't expand our horizons.
-            
+              each reason in reasonsList
+                li #[i.fa-li.fa.fa-comment] #{reason}
         .pure-u-1.pure-u-md-1-2
-          .description-text
-            .question
-              |So how do we actually make better social media ?
-            |WorthWhileWeb is a movement to imagine and promote online environments so enriching you'll never say the internet is a waste of time again.
+          .description-text=rightDescriptionText
           .btn-cont
             input(type="email" placeholder="Weekly Newsletter")
             button.btn
@@ -56,53 +50,17 @@ block content
         .pure-u-1
           .screen-description
             |A collection of initiatives that help make the web a better place.
-      .pure-g(style="margin:0 1rem 0;")
-        .pure-u-1.pure-u-lg-1-3
-          .home-project-container
-            .home-project-img-cont
-              img(src="https://d1qb2nb5cznatu.cloudfront.net/startups/i/345970-6e39c2637bfe5a57e385b09d64c3c821-medium_jpg.jpg?buster=1462475283")
-            .home-project-text
-              .home-project-title Curiosity
-              .home-project-description Curiosity brings you the world's most inspiring articles and videos so you can learn something new every day!
-        .pure-u-1.pure-u-lg-1-3
-          .home-project-container
-            .home-project-img-cont
-              img(src="https://willhowe.uk/wp-content/uploads/2015/03/pindex-wordmark-864x562.png")
-            .home-project-text
-              .home-project-title Pindex
-              .home-project-description Pindex is a pinboard for learning. Collect and discover the best material. Love teaching. Love learning. 
-
-        .pure-u-1.pure-u-lg-1-3
-          .home-project-container
-            .home-project-img-cont
-              img(src="http://www.timewellspent.io/favicon.ico")
-            .home-project-text
-              .home-project-title Time Well Spent
-              .home-project-description A Movement to align technology with our humanity.
-
-      .pure-g(style="margin:0 1rem 0;")
-        .pure-u-1.pure-u-lg-1-3
-          .home-project-container
-            .home-project-img-cont
-              img(src="https://media.glassdoor.com/sqll/1122864/degreed-squarelogo-1447968986190.png")
-            .home-project-text
-              .home-project-title Degreed
-              .home-project-description The lifelong learning platform
-        .pure-u-1.pure-u-lg-1-3
-          .home-project-container
-            .home-project-img-cont
-              img(src="http://www.underconsideration.com/brandnew/archives/quora_icon.png")
-            .home-project-text
-              .home-project-title Quora
-              .home-project-description The best answer to any question
-
-        .pure-u-1.pure-u-lg-1-3
-          .home-project-container
-            .home-project-img-cont
-              img(src="https://uncommon.cc/assets/favicons/touch-icon-192x192-d837f5cc7249bb36e48753b6a6a85cb3ceef030b5be24e2bb6defdf82b319fbc.png")
-            .home-project-text
-              .home-project-title Uncommon
-              .home-project-description A diverse, slow web community free of ads and full of wonder.
+      - var groupedBy3Initiatives = helpers.groupBy(initiatives, 3);
+      each threeInitiatives in groupedBy3Initiatives
+        .pure-g(style="margin:0 1rem 0;")
+          each initiative in threeInitiatives
+            .pure-u-1.pure-u-lg-1-3
+              .home-project-container
+                .home-project-img-cont
+                  img(src=initiative.image)
+                .home-project-text
+                  a.home-project-title(href=initiative.path)=initiative.title
+                  .home-project-description=initiative.short_description
       .pure-g
         .pure-u-1
           .btn-cont
@@ -122,7 +80,7 @@ block content
               img(src="http://www.wwwdesign.co.nz/Quora.jpg")
         .pure-u-1.pure-u-md-2-3
           .screen-content.screen-text.display-flex.justify-center
-            .value-title How-To Diversify your Quora Feed
+            .value-title=helpers.capitalize("How-To Diversify your Quora Feed")
             .value-description
               |We love Quora. Their newsletter systematically hooks us. But the same topics come back over and over.
               br

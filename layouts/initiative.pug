@@ -5,16 +5,17 @@ block content
     .pure-g
       .pure-u-1.pure-u-lg-1-2
         .initiative-img-cont
-          img(src="./assets/screenshot-curiosity.png")
+          img(src=image)
       .pure-u-1.pure-u-lg-1-2
         .initiative-text
           .initiative-title=title
-          .initiative-description!=contents
-          .initiative-site www.curiosity.com
+          .initiative-description!=short_description
+          a.initiative-site=website
           .initiative-btn
             button.btn
-              a(href=site target="_blank") Try it
+              a(href=website target="_blank") Try it
     .pure-g
       .pure-u-1
         .initiative-worthwhile Why it's WorthWhile
         .initiative-opinion Describe the initiative with our own words, why we think it's cool, and how it helps make the web a better place. Could also include pros and cons, or tips on how to use it ?
+        .initiative-opinion!=contents

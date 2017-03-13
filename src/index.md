@@ -1,6 +1,5 @@
 ---
 layout: "home.pug"
-title: "Home page"
 permalink: false
 heading: Worthwhileweb
 reasonsList:

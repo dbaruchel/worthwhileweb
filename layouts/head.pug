@@ -8,28 +8,34 @@ mixin scriptsHeaders(sources)
     script(src=source defer)
   <!--<![endif]-->
 
-head
-  meta(charset="UTF-8")
-  meta(content="text/html; charset=utf-8" http-equiv="Content-Type")
-  meta(name="viewport" content="user-scalable=no, initial-scale=1, minimal-ui, maximum-scale=1, minimum-scale=1")
-  title WorthWhileWeb — Better ways to spend your time on the Web
-  meta(name="description" content="Find better ways to spend your time on the Web")
+mixin seoHeaders(title, description, image)
+  title=title
+  meta(name="description" content=description)
   meta(name="keywords" content="Web, Culture, Interesting, Spend time, Learn, Discover, Explore")
 
   //- TAGS FACEBOOK
   //- meta(property="og:url" content="https://www.monsieurbarbier.com/")
   meta(property="og:type" content="website")
-  meta(property="og:title" content="WorthWhileWeb")
-  meta(property="og:image" content="http://kalys-solutions.com/wp-content/uploads/2016/04/Innovation_Mission-possible.jpg")
-  meta(property="og:description" content="Find better ways to spend your time on the Web")
+  meta(property="og:title" content=title)
+  meta(property="og:image" content=image)
+  meta(property="og:description" content=description)
 
   //- TAGS TWITTER
   meta(name="twitter:card" content="summary_large_image")
   //- meta(name="twitter:site" content="@MonsieurBarbier")
   //- meta(name="twitter:creator" content="@MonsieurBarbier")
-  meta(name="twitter:title" content="WorthWhileWeb")
-  meta(name="twitter:description" content="Find better ways to spend your time on the Web")
-  meta(name="twitter:image" content="http://kalys-solutions.com/wp-content/uploads/2016/04/Innovation_Mission-possible.jpg")
+  meta(name="twitter:title" content=title)
+  meta(name="twitter:description" content=description)
+  meta(name="twitter:image" content=image)
+
+head
+  meta(charset="UTF-8")
+  meta(content="text/html; charset=utf-8" http-equiv="Content-Type")
+  meta(name="viewport" content="user-scalable=no, initial-scale=1, minimal-ui, maximum-scale=1, minimum-scale=1")
+  - var seoTitle = seo.title || title;
+  - var seoDescription = seo.description || description;
+  - var seoImage = seo.image || image;
+  +seoHeaders(seoTitle, seoDescription, seoImage)
 
   //- FAVICON
   link(href="favicon.ico" rel="shortcut icon" type="image/x-icon")

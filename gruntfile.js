@@ -60,8 +60,14 @@ module.exports = function(grunt) {
         options: {
           clean: true,
           metadata: {
-            title: 'WorthWhileWeb',
+            title: 'WorthWhileWeb — Better ways to spend your time on the Web',
             description: 'Find better ways to spend your time on the web.',
+            image: "http://kalys-solutions.com/wp-content/uploads/2016/04/Innovation_Mission-possible.jpg",
+            seo: {
+              // title,
+              // image
+              // description
+            }
           },
           src: 'src',
           dest: 'metal-build'

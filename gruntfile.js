@@ -61,7 +61,8 @@ module.exports = function(grunt) {
           clean: true,
           metadata: {
             title: 'WorthWhileWeb — Better ways to spend your time on the Web',
-            description: 'Find better ways to spend your time on the web.',
+            // description: 'Find better ways to spend your time on the web.',
+            description: 'Better ways to seek information and enrich your knowledge.'
             image: "http://kalys-solutions.com/wp-content/uploads/2016/04/Innovation_Mission-possible.jpg",
             seo: {
               // title,

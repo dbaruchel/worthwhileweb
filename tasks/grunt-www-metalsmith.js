@@ -7,6 +7,7 @@ var Metalsmith  = require('metalsmith'),
     ms_layouts = require('metalsmith-layouts'),
     ms_permalinks = require('metalsmith-permalinks'),
     ms_links = require('metalsmith-relative-links'),
+    ms_propdown = require('metalsmith-propdown'),
 
     ms_collections = require('metalsmith-collections'),
     ms_pagination  = require('metalsmith-pagination'),
@@ -31,7 +32,6 @@ var _ = require('underscore');
     // striptags   = require('striptags');
     // 
 Helpers = {
-    capitalize: function(text) { return text.toUpperCase(); },
     groupBy: function(list, number) {
         var lists = _.groupBy(list, function(element, index){
           return Math.floor(index / number);
@@ -39,7 +39,6 @@ Helpers = {
         lists = _.toArray(lists);
         return lists;
     },
-    swag: 'SWAG',
 };
 
 module.exports = plugin;
@@ -91,8 +90,44 @@ function plugin(grunt)
                 pattern: 'initiatives/*.md',
                 sortBy: 'date',
                 reverse: true
-            }
+            },
+            howtos: {
+                pattern: 'howtos/*.md',
+                sortBy: 'date',
+                reverse: true
+            },
+            reads: {
+                pattern:'reads/*.md',
+                sortBy: 'date',
+                reverse: true
+            },
+            experiments: {
+                pattern: 'experiments/*.md',
+                sortBy: 'date',
+                reverse: true
+            },
         }))
+
+        .use(ms_propdown({
+            collection: 'initiatives',
+            property: 'short_description'
+        }))
+
+        .use(ms_propdown({
+            collection: 'howtos',
+            property: 'short_description'
+        }))
+
+        .use(ms_propdown({
+            collection: 'reads',
+            property: 'short_description'
+        }))
+
+        .use(ms_propdown({
+            collection: 'experiments',
+            property: 'short_description'
+        }))
+
 
         .use(ms_permalinks({
             // original options would act as the keys of a `default` linkset, 
@@ -100,9 +135,25 @@ function plugin(grunt)
             date: 'YYYY',
 
             // each linkset defines a match, and any other desired option
-            linksets: [{
+            linksets: [
+            {
                 match: { collection: 'initiatives' },
                 pattern: 'initiatives/:title',
+                // date: 'mmddyy'
+            },
+            {
+                match: { collection: 'howtos' },
+                pattern: 'guides/:title',
+                // date: 'mmddyy'
+            },
+            {
+                match: { collection: 'reads' },
+                pattern: 'reads/:title',
+                // date: 'mmddyy'
+            },
+            {
+                match: { collection: 'experiments' },
+                pattern: 'experiments/:title',
                 // date: 'mmddyy'
             }]
         }))

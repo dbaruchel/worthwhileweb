@@ -30,6 +30,7 @@
     "metalsmith-matters": "^1.2.0",
     "metalsmith-pagination": "^1.4.0",
     "metalsmith-permalinks": "^0.5.0",
+    "metalsmith-propdown": "^1.0.0",
     "metalsmith-relative-links": "^1.1.0",
     "pug": "^2.0.0-beta6",
     "underscore": "^1.8.3"

@@ -2,19 +2,19 @@ mixin navbar(route)
   nav
     ul
       li
-        a(href="index.html" class= route ==="index" ? "active" : "")
+        a(href=link.to("/") class= route ==="index" ? "active" : "")
           |#[i.fa.fa-home]&nbsp; Home
       li
-        a(href="collection.html" class= route ==="collection" ? "active" : "")
+        a(href=link.to("/collection") class= route ==="collection" ? "active" : "")
           |#[i.fa.fa-database]&nbsp; Collection
       li
-        a(href="projets.html" class= route ==="projets" ? "active" : "")
+        a(href=link.to("/projets") class= route ==="projets" ? "active" : "")
           |#[i.fa.fa-lightbulb-o]&nbsp; Browse Better
       li
-        a(href="equipe.html" class= route ==="equipe" ? "active" : "")
+        a(href=link.to("/equipe") class= route ==="equipe" ? "active" : "")
           |#[i.fa.fa-graduation-cap]&nbsp; Go Further
       li
-        a(href="offre.html" class= route ==="offre" ? "active" : "")
+        a(href=link.to('/offre') class= route ==="offre" ? "active" : "")
           |#[i.fa.fa-flask]&nbsp; Experiments
     
     a.contact(style="float:right;" href="" target="_blank") Contact

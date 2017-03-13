@@ -59,8 +59,8 @@ block content
                 .home-project-img-cont
                   img(src=initiative.image)
                 .home-project-text
-                  a.home-project-title(href=initiative.path)=initiative.title
-                  .home-project-description=initiative.short_description
+                  a.home-project-title(href=link.to(initiative.path))=initiative.title
+                  .home-project-description!=initiative.short_description
       .pure-g
         .pure-u-1
           .btn-cont
@@ -73,33 +73,16 @@ block content
   section#home-screen-2
     h1.screen-title Browse Better
     .screen-container
-      .pure-g(style="padding: 1rem 0;")
-        .pure-u-1.pure-u-md-1-3
-          .screen-content.display-flex.justify-center
-            .value-img-container
-              img(src="http://www.wwwdesign.co.nz/Quora.jpg")
-        .pure-u-1.pure-u-md-2-3
-          .screen-content.screen-text.display-flex.justify-center
-            .value-title=helpers.capitalize("How-To Diversify your Quora Feed")
-            .value-description
-              |We love Quora. Their newsletter systematically hooks us. But the same topics come back over and over.
-              br
-              br
-              |We share ways to keep it interesting and diversified.
-
-      .pure-g(style="padding: 1rem 0;")
-        .pure-u-1.pure-u-md-1-3
-          .screen-content.display-flex.justify-center
-            .value-img-container
-              img(src="http://horseedmedia.net/wp-content/uploads/2013/03/like-thum.jpg")
-        .pure-u-1.pure-u-md-2-3
-          .screen-content.screen-text.display-flex.justify-center
-            .value-title How-To get the most from your Facebook likes
-            .value-description
-              |You know this page you love but don't ever see on your feed ? Meanwhile BuzzFeed is there every other post.
-              br
-              br
-              |Here's a few tips to take back control.
+      each howto in howtos
+        .pure-g(style="padding: 1rem 0;")
+          .pure-u-1.pure-u-md-1-3
+            .screen-content.display-flex.justify-center
+              .value-img-container
+                img(src=howto.image)
+          .pure-u-1.pure-u-md-2-3
+            .screen-content.screen-text.display-flex.justify-center
+              .value-title #[a(href=link.to(howto.path))=howto.title]
+              .value-description!=howto.short_description
       .pure-g
         .pure-u-1
           .btn-cont
@@ -113,29 +96,19 @@ block content
         .pure-u-1
           .screen-description
             |A few interesting reads on how feeds and recommendation algorithms work, and why it matters.
-      .pure-g(style="margin:0 1rem 0;")
-        .pure-u-1.pure-u-lg-1-3
-          .article-container
-            .article-text
-              a(href="https://youtu.be/PowqvYH8tPU?t=48m48s")
-                .article-title Conversation with Tim Berners-Lee
-              .article-description Everytime you build an application, think of how you can make it better at bridging.
-              .article-tags #openweb #culture #exchange
+      - var groupedBy3Reads = helpers.groupBy(reads, 3);
+      each threeReads in groupedBy3Reads
 
-        .pure-u-1.pure-u-lg-1-3
-          .article-container
-            .article-text
-              .article-title Turn On Reality
-              .article-description We must stop endlessly curating our personal brands in our digital echo chambers.
-              .article-tags #SocialMedia #startups #SiliconValley
-
-        .pure-u-1.pure-u-lg-1-3
-          .article-container
-            .article-text
-              a(href="http://bridges.land/blog/beyond-search-personalisation-treasures-await/")
-                .article-title Beyond search and personalization, treasures await
-              .article-description Our blog article that traces the evolution of how we explore the web, and explains why we are building Bridges.
-              .article-tags #discovery #algorithms #startup
+        .pure-g(style="margin:0 1rem 0;")
+          each read in threeReads
+            .pure-u-1.pure-u-lg-1-3
+              .article-container
+                .article-text
+                  .article-title #[a(href=read.url)=read.title]
+                  .article-description1!=read.short_description
+                  .article-tags 
+                    each tag in read.tags
+                      | ##{tag} 
       .pure-g
         .pure-u-1
           .btn-cont
@@ -149,46 +122,20 @@ block content
         .pure-u-1
           .screen-description
             |We experiment on social platforms, leveraging the power of communities to spread culture on the web, and have fun !
-      .pure-g(style="margin:0 1rem 0;")
-        .pure-u-1.pure-u-lg-1-3
-          .home-project-container
-            .home-project-img-cont
-              img(src="https://scontent-cdg2-1.xx.fbcdn.net/v/t31.0-8/13340257_1709888379280489_3699870381432100215_o.png?oh=3f1966cf4d7ddfe9d481bce9dc549b6d&oe=59735084")
-            .home-project-text
-              .home-project-title Bridges
-              .home-project-description We are building a social media where people guide each other out of their comfort zones.
-        .pure-u-1.pure-u-lg-1-3
-          .home-project-container
-            .home-project-img-cont
-              img(src="https://scontent-cdg2-1.cdninstagram.com/t51.2885-15/e35/16583942_1249553775080108_5269457815973396480_n.jpg")
-            .home-project-text
-              .home-project-title Instagram Dominoes
-              .home-project-description Each picture is a reply to the previous one, suggested by our followers.
-        .pure-u-1.pure-u-lg-1-3
-          .home-project-container
-            .home-project-img-cont
-              img(src="https://pbs.twimg.com/profile_images/817085865948233728/GYFyrkej_400x400.jpg")
-            .home-project-text
-              .home-project-title From A to B
-              .home-project-description On Facebook and Twitter, we share content that brings together two subjects that are not obviously related.
+      - var groupedBy3Experiments = helpers.groupBy(experiments, 3);
+      each threeExperiments in groupedBy3Experiments
+        .pure-g(style="margin:0 1rem 0;")
+          each experiment in threeExperiments
+            .pure-u-1.pure-u-lg-1-3
+              .home-project-container
+                .home-project-img-cont
+                  img(src=experiment.image)
+                .home-project-text
+                  .home-project-title=experiment.title
+                  .home-project-description!=experiment.short_description
 
       .pure-g
         .pure-u-1
           .btn-cont
             button.btn 
               a(href="projets.html") View More
-
-  //- section#home-screen-7
-  //-   include projects.pug
-
-  //- section#home-partners
-  //-   h2.home-subtitle Nos partenaires
-  //-   .home-partner-logo-cont
-  //-     img(src="https://www.polytechnique.edu/sites/all/institutionnel/Logo_Ecole%20polytechnique_horizontal_72dpi.jpg" style="-webkit-filter:grayscale(1) invert(1) brightness(2);filter:grayscale(1) invert(1) brightness(2)")
-  //-   .home-partner-logo-cont
-  //-     img(src="https://assets-production-webvanta-com.s3-us-west-2.amazonaws.com/000000/51/21/original/images/berkeley-logo.png" style="-webkit-filter:grayscale(1) invert(1) brightness(2);filter:grayscale(1) invert(1) brightness(2)")
-  //-   .home-partner-logo-cont
-  //-     img(src="http://theschoolab.com/wp-content/uploads/2016/09/logo_site_schoolab.png" style="-webkit-filter:grayscale(1) invert(1) brightness(2);filter:grayscale(1) invert(1) brightness(2)")
-  //-   .home-partner-logo-cont(style="width: 200px;")
-  //-     img(src="https://scontent-lht6-1.xx.fbcdn.net/v/t1.0-9/14725711_2153707181520990_4904325706566306218_n.png?oh=545cae383e06a0640bc3524811a17c7b&oe=58B5D436" style="-webkit-filter:grayscale(1) invert(1) brightness(2);filter:grayscale(1) invert(1) brightness(2)")
-

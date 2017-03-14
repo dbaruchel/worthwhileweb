@@ -143,7 +143,7 @@ function plugin(grunt)
             },
             {
                 match: { collection: 'howtos' },
-                pattern: 'guides/:title',
+                pattern: 'howtos/:title',
                 // date: 'mmddyy'
             },
             {

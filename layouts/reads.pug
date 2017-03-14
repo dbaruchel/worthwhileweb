@@ -1,0 +1,23 @@
+extends layout.pug
+block content
+  +navbar("reads")
+
+  section#home-screen-7
+    .screen-container
+      .pure-g
+        .pure-u-1
+          .screen-description
+            |A few interesting reads on how feeds and recommendation algorithms work, and why it matters.
+      - var groupedBy3Reads = helpers.groupBy(reads, 3);
+      each threeReads in groupedBy3Reads
+
+        .pure-g(style="margin:0 1rem 0;")
+          each read in threeReads
+            .pure-u-1.pure-u-lg-1-3
+              .article-container
+                .article-text
+                  .article-title #[a(href=read.url)=read.title]
+                  .article-description1!=read.short_description
+                  .article-tags 
+                    each tag in read.tags
+                      | ##{tag}

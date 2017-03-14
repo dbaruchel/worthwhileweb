@@ -870,6 +870,7 @@ footer {
     margin-top: 0;
     font-size: 2em;
     font-weight: 600;
+    color:$color1;
   }
 
   h2 {
@@ -881,10 +882,11 @@ footer {
   }
 
   h4 {
-    font-size: 1.1em;
+    font-size: 1em;
+    font-weight: 600;
     text-transform: uppercase;
     color: #999;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
   }
 
   h5 {

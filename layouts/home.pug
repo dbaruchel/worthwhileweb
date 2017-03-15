@@ -6,12 +6,14 @@ block content
       .pure-g
         .pure-u-1.pure-u-md-1-2
           .description-text
-            .question We've heard these too many times!!...
+            .question We've heard these too many times...
             ul.fa-ul
               each reason in reasonsList
                 li #[i.fa-li.fa.fa-comment] #{reason}
         .pure-u-1.pure-u-md-1-2
-          .description-text=rightDescriptionText
+          .description-text
+            .question So how do we actually make better social media ?
+            div=rightDescriptionText
           .btn-cont
             input(type="email" placeholder="Weekly Newsletter")
             button.btn
@@ -56,16 +58,18 @@ block content
           each initiative in threeInitiatives
             .pure-u-1.pure-u-lg-1-3
               .home-project-container
-                .home-project-img-cont
-                  img(src=initiative.image)
+                a(href=link.to(initiative.path))
+                  .home-project-img-cont
+                    img(src=initiative.image)
                 .home-project-text
-                  a.home-project-title(href=link.to(initiative.path))=initiative.title
+                  a(href=link.to(initiative.path))
+                    .home-project-title=initiative.title
                   .home-project-description!=initiative.short_description
       .pure-g
         .pure-u-1
           .btn-cont
             button.btn 
-              a(href="projets.html") View More
+              a(href="initiatives") View More
             //- |&nbsp;&nbsp;
             //- button.btn 
             //-   a(href="offre.html") Toutes nos offres

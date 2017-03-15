@@ -1,6 +1,6 @@
 ---
 collection: 'howtos'
-layout: "initiative.pug"
+layout: "article.pug"
 title: How to diversify your quora feed
 date: 01/01/2016
 short_description: |

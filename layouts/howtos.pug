@@ -8,11 +8,11 @@ block content
         .pure-g(style="padding: 1rem 0;")
           .pure-u-1.pure-u-md-1-3
             .screen-content.display-flex.justify-center
-              a(href=link.to(howto.path))
+              a(href=link('howtos/', howto))
                 .value-img-container
                   img(src=howto.image)
           .pure-u-1.pure-u-md-2-3
             .screen-content.screen-text.display-flex.justify-center
-              a(href=link.to(howto.path))
+              a(href=link('howtos/', howto))
                 .value-title!=howto.title
               .value-description!=howto.short_description

@@ -128,6 +128,9 @@ function plugin(grunt)
             property: 'short_description'
         }))
 
+        .use(ms_debug())
+
+        .use(ms_links())
 
         .use(ms_permalinks({
             // original options would act as the keys of a `default` linkset, 
@@ -158,9 +161,9 @@ function plugin(grunt)
             }]
         }))
 
-        .use(ms_links())
 
-        .use(ms_debug())
+
+
 
         .use(ms_layouts({
             engine: 'pug',

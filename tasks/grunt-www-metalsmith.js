@@ -130,7 +130,7 @@ function plugin(grunt)
 
         .use(ms_debug())
 
-        .use(ms_links())
+
 
         .use(ms_permalinks({
             // original options would act as the keys of a `default` linkset, 
@@ -161,9 +161,8 @@ function plugin(grunt)
             }]
         }))
 
-
-
-
+        // Use relative links to make it work
+        .use(ms_links()) 
 
         .use(ms_layouts({
             engine: 'pug',

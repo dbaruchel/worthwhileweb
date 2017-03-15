@@ -130,6 +130,8 @@ function plugin(grunt)
 
         .use(ms_debug())
 
+        // Use relative links to make it work
+        .use(ms_links()) 
 
 
         .use(ms_permalinks({
@@ -161,8 +163,6 @@ function plugin(grunt)
             }]
         }))
 
-        // Use relative links to make it work
-        .use(ms_links()) 
 
         .use(ms_layouts({
             engine: 'pug',

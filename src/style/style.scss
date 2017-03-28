@@ -97,6 +97,26 @@ html, button, input, select, textarea,
   }
 }
 
+.suggest-cta {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #e91e63;
+  font-family: "Futura", Helvetica;
+
+  a {
+    color:inherit;
+  }
+}
+@media screen and (min-width: 48em) {
+  .suggest-cta {
+    text-align: center;
+    position:relative;
+    left:-14%;
+    line-height: 3.4rem;
+    font-size: 1.1rem;
+  }
+}
+
 .hide-on-med-and-down {
   display: none;
 }
@@ -117,10 +137,12 @@ html, button, input, select, textarea,
 
 header {
   color: $color2;
-  background-image: -webkit-linear-gradient(rgba(0, 27, 92, 0.3),rgb(0, 27, 92)), url('http://kingofwallpapers.com/discovery/discovery-001.jpg');
-  background-image: linear-gradient(rgba(0, 27, 92, 0.3),rgb(0, 27, 92)), url('http://kingofwallpapers.com/discovery/discovery-001.jpg');
-  // Maybe: http://cdn.overbridges.com/aws/unsafe/origxorig/blog_s3Imports/bHDxnqRcWJmmMZMz5-between_time_and_space_by_yuumei-d75m84a.jpg
-  background-position:center;
+  // background-image: linear-gradient(rgba(0, 27, 92, 0.3),rgb(0, 27, 92)), url('http://kingofwallpapers.com/discovery/discovery-001.jpg');
+  // background-image: linear-gradient(rgba(0, 27, 92, 0.3),rgb(0, 27, 92)), url('https://media.giphy.com/media/l3q2RgN7WUjeUUXm0/giphy.gif');
+  background-image: -webkit-linear-gradient(rgba(0, 27, 92, 0.3),rgb(0, 27, 92)), url('https://media.giphy.com/media/ygAaR0n5RsyAM/giphy.gif');
+  background-image: linear-gradient(rgba(0, 27, 92, 0.3),rgb(0, 27, 92)), url('https://media.giphy.com/media/ygAaR0n5RsyAM/giphy.gif');
+  // background-position:center;
+  background-position:center 20%;
   background-size:cover;
   .header-text {
     padding: 1rem;
@@ -253,6 +275,22 @@ nav {
   }
 }
 
+.newsletter {
+  padding-top:2rem;
+  input {
+    height: 3.4rem;
+    &.email {
+      padding: 1rem;
+      border-radius:2px;
+      color:$color1;
+      border:1px solid #ccc;
+    }
+    &.btn {
+      padding:0 1rem;
+    }
+  }
+}
+
 
 .screen-title {
   color: $color2;
@@ -286,14 +324,11 @@ nav {
 }
 
 #home-screen-1 {
-  padding:1rem 0;
-  input {
-    height: 3.4rem;
-    padding: 1rem;
-  }
+  padding:3rem 0 1rem;
+
   .description-text {
     width: 90%;
-    margin: 0 0 0 auto;
+    margin: 0 auto;
     padding:0 2rem;
     text-align: left;
     font-size: 1.1rem;
@@ -307,6 +342,8 @@ nav {
       font-size: 1.2rem;
       font-weight: 700;
       margin-bottom: 1em;
+      font-family: "Futura", Helvetica;
+      color: #001b5c;
     }
     // .motto {
     //   padding: 1rem;
@@ -318,14 +355,11 @@ nav {
     //   background-color: $color2;
     // }
 
-    .btn {
-      font-size: 1.4rem;
-    }
     .newsletter-desc {
       font-size: 1rem;
       font-style:italic;
       color:#999;
-      text-align:center;
+      text-align:left;
       padding-top:0.5rem;
     }
   }
@@ -373,9 +407,12 @@ nav {
         font-size: 1.6rem;
         padding-bottom:1rem;
         position: relative;
+        a {
+          text-decoration: none;
+          color:inherit;
+        }
       }
       .value-description {
-
         font-size: 1.3rem;
         padding-bottom:2rem;
       }
@@ -504,6 +541,7 @@ nav {
       color: $color1;
       text-transform: uppercase;
       font-family: "Futura", Helvetica;
+      font-weight: 900;
     }
     .home-project-description {
       font-size: 1.2rem;
@@ -532,10 +570,14 @@ nav {
     padding: 1rem 2rem 2rem;
     .article-title {
       font-size: 1.3rem;
-      letter-spacing: 0.1rem;
+      letter-spacing: 0.05rem;
       padding-bottom: 0.5rem;
       color: $color1;
       text-decoration: underline;
+      font-family: "Futura", Helvetica;
+      a {
+        color:inherit;
+      }
     }
     .article-description {
       font-size: 1.2rem;
@@ -761,16 +803,23 @@ footer {
 ////////// STYLING FOR ARTICLES ///////////
 //***************************************//
 
-#article-page {
+.article-page {
   padding:2rem 5%;
-  line-height: 1.5;
-  font-size: 15px;
   @media screen and (min-width: 32rem) and (max-width: 48rem) {
     padding:2rem 15%;
-    font-size: 18px;
   }
   @media screen and (min-width: 48rem) {
     padding:2rem 20%;
+  }
+}
+
+.md-content {
+  line-height: 1.5;
+  font-size: 15px;
+  @media screen and (min-width: 32rem) and (max-width: 48rem) {
+    font-size: 18px;
+  }
+  @media screen and (min-width: 48rem) {
     font-size: 20px;
   }
   @media print {

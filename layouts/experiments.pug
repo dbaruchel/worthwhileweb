@@ -14,8 +14,10 @@ block content
           each experiment in threeExperiments
             .pure-u-1.pure-u-lg-1-3
               .home-project-container
-                .home-project-img-cont
-                  img(src=experiment.image)
+                a(href=link('experiments/', experiment))
+                  .home-project-img-cont
+                    img(src=experiment.image)
                 .home-project-text
-                  .home-project-title=experiment.title
+                  a(href=link('experiments/', experiment))
+                    .home-project-title=experiment.title
                   .home-project-description!=experiment.short_description

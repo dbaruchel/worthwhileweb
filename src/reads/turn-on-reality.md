@@ -1,6 +1,6 @@
 ---
 collection: 'reads'
-layout: "initiative.pug"
+layout: "article.pug"
 title: Turn On Reality
 date: 01/01/2016
 short_description: |

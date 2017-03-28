@@ -14,15 +14,27 @@ block content
           .description-text
             .question So how do we actually make better social media ?
             div=rightDescriptionText
-          .btn-cont
-            input(type="email" placeholder="Weekly Newsletter")
-            button.btn
-              a(href="" target="_blank") Subscribe
-          .description-text
+
+            //- Begin MailChimp Signup Form
+            .newsletter
+              #mc_embed_signup
+                form(action="//worthwhileweb.us15.list-manage.com/subscribe/post?u=2efa44f16c2188cc7c51e9990&amp;id=65ab841881" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate)
+                  #mc_embed_signup_scroll
+                    .mc-field-group(style="display:inline-block")
+                      //- label(for="mce-EMAIL") Email Address
+                      input#mce-EMAIL.required.email(type="email" placeholder="Weekly Newsletter" value="" name="EMAIL")
+                    //- real people should not fill this in and expect good things - do not remove this or risk form bot signups
+                    div(style="position: absolute; left: -5000px;" aria-hidden="true")
+                      input(type="text" name="b_2efa44f16c2188cc7c51e9990_65ab841881" tabindex="-1" value="")
+                    .clear(style="display:inline-block")
+                      input#mc-embedded-subscribe.button.btn(type="submit" value="Subscribe" name="subscribe")
+                    #mce-responses.clear
+                      #mce-error-response.response(style="display:none")
+                      #mce-success-response.response(style="display:none")
+              //- End mc_embed_signup
+
             .newsletter-desc
-              |Absolutely No Spam.
-              br
-              |Only worthwhile initiatives, tips, &amp; reads.
+              |Absolutely No Spam. Only worthwhile initiatives, tips, &amp; reads.
               br
               |On a weekly basis.
         //- if app.useColumns
@@ -66,13 +78,14 @@ block content
                     .home-project-title=initiative.title
                   .home-project-description!=initiative.short_description
       .pure-g
-        .pure-u-1
+        .pure-u-1.pure-u-md-1-3
+        .pure-u-1.pure-u-md-1-3
           .btn-cont
             button.btn 
               a(href="initiatives") View More
-            //- |&nbsp;&nbsp;
-            //- button.btn 
-            //-   a(href="offre.html") Toutes nos offres
+        .pure-u-1.pure-u-md-1-3
+          .suggest-cta
+            |Or #[a(href="" target="_blank") suggest a worthwhile initiative]
 
   section#home-screen-2
     h1.screen-title Browse Better
@@ -81,17 +94,22 @@ block content
         .pure-g(style="padding: 1rem 0;")
           .pure-u-1.pure-u-md-1-3
             .screen-content.display-flex.justify-center
-              .value-img-container
-                img(src=howto.image)
+              a(href=link.to(howto.path))
+                .value-img-container
+                  img(src=howto.image)
           .pure-u-1.pure-u-md-2-3
             .screen-content.screen-text.display-flex.justify-center
               .value-title #[a(href=link.to(howto.path))=howto.title]
               .value-description!=howto.short_description
       .pure-g
-        .pure-u-1
+        .pure-u-1.pure-u-md-1-3
+        .pure-u-1.pure-u-md-1-3
           .btn-cont
             button.btn 
-              a(href="projets.html") More Tips !
+              a(href="howtos") More Tips !
+        .pure-u-1.pure-u-md-1-3
+          .suggest-cta
+            |Or #[a(href="" target="_blank") suggest a worthwhile tip]
 
   section#home-screen-7
     h1.screen-title Go further
@@ -108,16 +126,20 @@ block content
             .pure-u-1.pure-u-lg-1-3
               .article-container
                 .article-text
-                  .article-title #[a(href=read.url)=read.title]
+                  .article-title #[a(href=link.to(read.path))=read.title]
                   .article-description1!=read.short_description
                   .article-tags 
                     each tag in read.tags
-                      | ##{tag} 
+                      span ##{tag}&nbsp;
       .pure-g
-        .pure-u-1
+        .pure-u-1.pure-u-md-1-3
+        .pure-u-1.pure-u-md-1-3
           .btn-cont
             button.btn 
-              a(href="projets.html") Read More
+              a(href="reads") Read More
+        .pure-u-1.pure-u-md-1-3
+          .suggest-cta
+            |Or #[a(href="" target="_blank") suggest a worthwhile read]
 
   section.home-screen-6
     h1.screen-title Our Experiments
@@ -132,14 +154,20 @@ block content
           each experiment in threeExperiments
             .pure-u-1.pure-u-lg-1-3
               .home-project-container
-                .home-project-img-cont
-                  img(src=experiment.image)
+                a(href=link.to(experiment.path))
+                  .home-project-img-cont
+                    img(src=experiment.image)
                 .home-project-text
-                  .home-project-title=experiment.title
+                  a(href=link.to(experiment.path))
+                    .home-project-title=experiment.title
                   .home-project-description!=experiment.short_description
 
       .pure-g
-        .pure-u-1
+        .pure-u-1.pure-u-md-1-3
+        .pure-u-1.pure-u-md-1-3
           .btn-cont
             button.btn 
-              a(href="projets.html") View More
+              a(href="experiments") View More
+        .pure-u-1.pure-u-md-1-3
+          .suggest-cta
+            |Or #[a(href="" target="_blank") suggest a worthwhile experiment]

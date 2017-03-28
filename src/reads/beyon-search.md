@@ -1,7 +1,7 @@
 ---
 collection: 'reads'
-layout: "initiative.pug"
-title: Beyond search and personalization, treasures awaut
+layout: "article.pug"
+title: Beyond search and personalization, treasures await
 date: 01/01/2016
 short_description: |
   Our blog article taht traces the evolution of how we explore the web, and explains why we are building Bridges.

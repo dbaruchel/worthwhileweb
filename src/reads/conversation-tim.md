@@ -1,8 +1,8 @@
 ---
 collection: 'reads'
-layout: "initiative.pug"
+layout: "article.pug"
 title: Conversation with Tim Berners-Lee
-date: 01/01/2016
+date: 01/01/2016s
 short_description: |
   Everytime you build an application think of how you can make it better at bridging.
 image: http://horseedmedia.net/wp-content/uploads/2013/03/like-thum.jpg

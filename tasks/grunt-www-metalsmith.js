@@ -108,6 +108,7 @@ function plugin(grunt)
             },
         }))
 
+        // Compiles markdown in html for all these fields
         .use(ms_propdown({
             collection: 'initiatives',
             property: 'short_description'

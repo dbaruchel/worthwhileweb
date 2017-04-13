@@ -7,7 +7,7 @@ block content
       .pure-g
         .pure-u-1
           .screen-description
-            |A collection of initiatives that help make the web a better place.
+            |A collection of initiatives that help make the web a better place. #{path}
       - var groupedBy3Initiatives = helpers.groupBy(initiatives, 3);
       each threeInitiatives in groupedBy3Initiatives
         .pure-g(style="margin:0 1rem 0;")
@@ -17,5 +17,6 @@ block content
                 .home-project-img-cont
                   img(src=initiative.image)
                 .home-project-text
-                  a.home-project-title(href=link.to(initiative.path))=initiative.title
+                  h1 #{path} #{initiative.path} #{link(path, initiative.path)} #{link('/initiatives/index.html', '/initiatives/quora/index.html')} #{link.resolve('/initiatives/')}
+                  a.home-project-title(href=link.to(initiative.path))=initiative.title 
                   .home-project-description!=initiative.short_description

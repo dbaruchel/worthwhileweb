@@ -1,29 +1,23 @@
-## STFU website
-####you can work on it with Grunt, Pug, Sass, and a Json file for data
+## Website
+_metalsmith version_
 
-You will need to **install Node for npm and Ruby for Sass**.
+### Features 
+-Grunt for general build, and assets pipeline
+-Pug for templating layout
+-Sass for style syntax
+-Metalsmith for .md files and all the static blog thing processing.
+-Browsersync for automatic file reload
 
-- In your project folder, run:
-`npm init`
-and follow the instructions to create package.json
-
-- Install grunt:
-`npm install --save-dev grunt`
-
+### Installation
+You will need to **install Node for npm and sass**. Node -v >= v7.7.2 
 - Install grunt CLI:
 `npm install -g grunt-cli`
 
-- Install grunt plugin for Pug tasks:
-`npm install --save-dev grunt-contrib-pug`
+- Install npm packages
+`npm install`
 
-- Install grunt plugin for Sass tasks:
-`npm install grunt-contrib-sass --save-dev`
-
-- Install Pug:
-`npm install --save-dev pug`
-
-- Install grunt watch task:
-`npm install --save-dev grunt-contrib-watch`
+- Run the website
+`grunt`
 
 
 ---
@@ -32,4 +26,15 @@ and follow the instructions to create package.json
 - configure the task in grunt.initConfig({}) in the Gruntfile
 - add the grunt.loadNpmTasks() add the end of the Gruntfile
 - add the task in the grunt.registerTask([]) add the end of the Gruntfile
+
+### Metalsmith plugins and info
+
+_Watch out: Metalsmith has a very scattered documentation. But is very powerful, useful and integrated in the node flow :)_
+
+All the MS flow is in tasls/grunt-www-metalsmith
+
+#### Debug
+To actually show debug information you need to define an environment variable DEBUG and set it to:
+
+$ export DEBUG=metalsmith:*
 

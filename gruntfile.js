@@ -3,15 +3,15 @@
 // https://github.com/dbushell/dbushell.com
 // https://github.com/dbushell/dbushell.com/blob/v8/gruntfile.js
 
-module.exports = function(grunt) {
-  grunt.loadTasks('tasks');
+module.exports = function (grunt) {
+  grunt.loadTasks('tasks')
   // These plugins provide necessary tasks.
 
-  grunt.loadNpmTasks('grunt-sass');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-browser-sync');
-  grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-sass')
+  grunt.loadNpmTasks('grunt-contrib-watch')
+  grunt.loadNpmTasks('grunt-contrib-copy')
+  grunt.loadNpmTasks('grunt-browser-sync')
+  grunt.loadNpmTasks('grunt-contrib-clean')
 
   // Project configuration.
   grunt.initConfig({
@@ -26,15 +26,15 @@ module.exports = function(grunt) {
           src: ['**/*.scss'],
           dest: 'build/',
           ext: '.css'
-       }]
+        }]
       }
     },
     copy: {
       build: {
         cwd: 'metal-build',
-        src: [ 
+        src: [
           'js/*',
-          'style/*.css', 
+          'style/*.css',
           'assets/**',
           '**/*.html'
         ],
@@ -45,7 +45,7 @@ module.exports = function(grunt) {
     browserSync: {
       dev: {
         bsFiles: {
-          src : [
+          src: [
             'build/*'
           ]
         },
@@ -55,7 +55,7 @@ module.exports = function(grunt) {
         }
       }
     },
-    "grunt-www-metalsmith" : {
+    'grunt-www-metalsmith': {
       'all': {
         options: {
           clean: true,
@@ -63,7 +63,7 @@ module.exports = function(grunt) {
             title: 'WorthWhileWeb — Better ways to seek information and enrich you knowledge.',
             // description: 'Find better ways to spend your time on the web.',
             description: 'Better ways to seek information and enrich your knowledge.',
-            image: "http://kalys-solutions.com/wp-content/uploads/2016/04/Innovation_Mission-possible.jpg",
+            image: 'http://kalys-solutions.com/wp-content/uploads/2016/04/Innovation_Mission-possible.jpg',
             seo: {
               // title,
               // image
@@ -76,23 +76,23 @@ module.exports = function(grunt) {
       }
     },
     watch: {
-      "rebuild-metal": {
+      'rebuild-metal': {
         files: ['Gruntfile.js', 'tasks/*', 'src/*', 'layouts/*'],
         tasks: ['grunt-www-metalsmith']
       },
-      "rebuild": {
+      'rebuild': {
         files: ['metal-build/*'],
-        tasks: ['clean','copy', 'sass']
+        tasks: ['clean', 'copy', 'sass']
       },
       grunt: { files: [
         'Gruntfile.js'
-      ] },
-    },
-  });
+      ] }
+    }
+  })
 
-  grunt.registerTask('metal', ['grunt-www-metalsmith']);
+  grunt.registerTask('metal', ['grunt-www-metalsmith'])
   // define default task
-  grunt.registerTask('default', ['grunt-www-metalsmith', 'clean', 'copy', 'sass','browserSync', 'watch']);
+  grunt.registerTask('default', ['grunt-www-metalsmith', 'clean', 'copy', 'sass', 'browserSync', 'watch'])
 
-  grunt.registerTask('build', ['grunt-www-metalsmith', 'clean', 'copy', 'sass']);
-};
+  grunt.registerTask('build', ['grunt-www-metalsmith', 'clean', 'copy', 'sass'])
+}

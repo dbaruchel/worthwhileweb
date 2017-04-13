@@ -9,7 +9,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "standard": "^10.0.1",
     "babel-eslint": "^7.2.2",
     "eslint": "^3.19.0",
     "eslint-config-standard": "^10.2.0",
@@ -36,7 +35,9 @@
     "metalsmith-permalinks": "^0.5.0",
     "metalsmith-propdown": "^1.0.0",
     "metalsmith-relative-links": "^1.1.0",
+    "metalsmith-rootpath": "^1.0.4",
     "pug": "^2.0.0-beta11",
+    "standard": "^10.0.1",
     "underscore": "^1.8.3"
   }
 }

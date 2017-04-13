@@ -2,25 +2,25 @@ mixin navbar(route)
   nav
     ul
       li
-        a(href=link.to("/") class= route ==="index" ? "active" : "")
+        a(href=link('/') class= route ==="index" ? "active" : "")
           |#[i.fa.fa-home]&nbsp; Home
       li
-        a(href=link.to("/initiatives") class= route ==="initiatives" ? "active" : "")
+        a(href=link('initiatives') class= route ==="initiatives" ? "active" : "")
           |#[i.fa.fa-database]&nbsp; Collection
       li
-        a(href=link.to("/howtos") class= route ==="howtos" ? "active" : "")
+        a(href=link('howtos') class= route ==="howtos" ? "active" : "")
           |#[i.fa.fa-lightbulb-o]&nbsp; Browse Better
       li
-        a(href=link.to("/reads") class= route ==="reads" ? "active" : "")
+        a(href=link('reads') class= route ==="reads" ? "active" : "")
           |#[i.fa.fa-graduation-cap]&nbsp; Go Further
       li
-        a(href=link.to('/experiments') class= route ==="experiments" ? "active" : "")
+        a(href=link('experiments') class= route ==="experiments" ? "active" : "")
           |#[i.fa.fa-flask]&nbsp; Experiments
     
     //- a.contact(style="float:right;" href="" target="_blank") Contact
 
 header
   .header-text
-    h1.header-title WorthWhileWeb #{this.path}
+    h1.header-title WorthWhileWeb
       //- |#[span.name-w W]#[span orth]#[span.name-w W]#[span hile]#[span.name-w W]#[span eb]
     h2.header-description=description

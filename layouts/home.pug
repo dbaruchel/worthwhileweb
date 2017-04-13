@@ -51,11 +51,11 @@ block content
           each initiative in threeInitiatives
             .pure-u-1.pure-u-lg-1-3
               .home-project-container
-                a(href=link.to(initiative.path))
+                a(href=rootPath + initiative.path)
                   .home-project-img-cont
                     img(src=initiative.image)
                 .home-project-text
-                  a(href=link.to(initiative.path))
+                  a(href=link(initiative.path))
                     .home-project-title=initiative.title
                   .home-project-description!=initiative.short_description
       .pure-g
@@ -75,12 +75,12 @@ block content
         .pure-g(style="padding: 1rem 0;")
           .pure-u-1.pure-u-md-1-3
             .screen-content.display-flex.justify-center
-              a(href=link.to(howto.path))
+              a(href=link(howto.path))
                 .value-img-container
                   img(src=howto.image)
           .pure-u-1.pure-u-md-2-3
             .screen-content.screen-text.display-flex.justify-center
-              .value-title #[a(href=link.to(howto.path))=howto.title]
+              .value-title #[a(href=link(howto.path))=howto.title]
               .value-description!=howto.short_description
       .pure-g
         .pure-u-1.pure-u-md-1-3
@@ -107,7 +107,7 @@ block content
             .pure-u-1.pure-u-lg-1-3
               .article-container
                 .article-text
-                  .article-title #[a(href=link.to(read.path))=read.title]
+                  .article-title #[a(href=link(read.path))=read.title]
                   .article-description1!=read.short_description
                   .article-tags 
                     each tag in read.tags
@@ -135,11 +135,11 @@ block content
           each experiment in threeExperiments
             .pure-u-1.pure-u-lg-1-3
               .home-project-container
-                a(href=link.to(experiment.path))
+                a(href=link(experiment.path))
                   .home-project-img-cont
                     img(src=experiment.image)
                 .home-project-text
-                  a(href=link.to(experiment.path))
+                  a(href=link(experiment.path))
                     .home-project-title=experiment.title
                   .home-project-description!=experiment.short_description
 
@@ -148,7 +148,7 @@ block content
         .pure-u-1.pure-u-md-1-3
           .btn-cont
             button.btn 
-              a(href="experiments") View More
+              a(href=link('experiments')) View More
         .pure-u-1.pure-u-md-1-3
           .suggest-cta
             |Or #[a(href="" target="_blank") suggest a worthwhile experiment]

@@ -1,0 +1,19 @@
+backend:
+  name: github
+  repo: mcoenca/worthwhileweb
+  branch: master
+media-folder: 'src/assets'
+collections:
+  - name: 'initiatives'
+    label: 'Initiatives'
+    folder: 'src/initiatives'
+    create: true
+    slug: '{{slug}}'
+    fields:
+      - {label: 'Collection', name: 'collection', widget: 'hidden', default: 'initiatives'}
+      - {label: 'Layout', name: 'layout', widget: 'hidden', default: 'initiative.pug'}
+      - {label: 'Title', name: 'title', widget: 'string'}
+      - {label: 'Publish Date', name: 'date', widget: 'date'}
+      - {label: 'Short Description', name: 'short-description', widget: 'markdown'}
+      - {label: 'Icon', name: 'image', widget: 'image'}
+      - {label: 'Body', name: 'body', widget: 'markdown'}

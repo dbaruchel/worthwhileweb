@@ -37,7 +37,7 @@ module.exports = function (grunt) {
           'style/*.css',
           'assets/**',
           '**/*.html',
-          'admin/config.yaml'
+          'admin/config.yml'
         ],
         dest: 'build',
         expand: true

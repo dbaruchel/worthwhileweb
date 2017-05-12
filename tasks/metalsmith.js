@@ -1,17 +1,17 @@
-var Metalsmith = require('metalsmith')
+const Metalsmith = require('metalsmith')
 
-var msMatters = require('metalsmith-matters')
-var msMarkdown = require('metalsmith-markdown')
-var msLayouts = require('metalsmith-layouts')
-var msPermalinks = require('metalsmith-permalinks')
-var msPropdown = require('metalsmith-propdown')
-var msCollections = require('metalsmith-collections')
-var msDebug = require('metalsmith-debug')
-var msRootPath = require('metalsmith-rootpath')
+const msMatters = require('metalsmith-matters')
+const msMarkdown = require('metalsmith-markdown')
+const msLayouts = require('metalsmith-layouts')
+const msPermalinks = require('metalsmith-permalinks')
+const msPropdown = require('metalsmith-propdown')
+const msCollections = require('metalsmith-collections')
+const msDebug = require('metalsmith-debug')
+const msRootPath = require('metalsmith-rootpath')
 
-var msLinks = require('../metal-plugins/link')
+const msLinks = require('../metal-plugins/link')
 
-var _ = require('underscore')
+const _ = require('underscore')
 // ms_feed        = require('metalsmith-feed'),
 // ms_drafts      = require('metalsmith-drafts'),
 // ms_branch      = require('metalsmith-branch'),
@@ -19,30 +19,26 @@ var _ = require('underscore')
 // ms_db_sitemap  = require('./dbushell-metalsmith-sitemap'),
 // ms_db_ampify   = require('./dbushell-metalsmith-ampify'),
 
-var helpers = {
+const helpers = {
   groupBy: function (list, number) {
-    var lists = _.groupBy(list, function (element, index) {
+    return _.toArray(_.groupBy(list, function (element, index) {
       return Math.floor(index / number)
-    })
-    lists = _.toArray(lists)
-    return lists
+    }))
   },
   link: function (text, exp) {
     return text
   }
 }
 
-module.exports = plugin
-
 function plugin (grunt) {
   // based on https://github.com/doingweb/grunt-metalsmith
 
-  grunt.registerMultiTask('grunt-www-metalsmith',
+  grunt.registerMultiTask('metalsmith',
     'Our metalsmith configuration for WWW',
     function () {
-      var done = this.async()
+      const done = this.async()
 
-      var options = this.options({
+      const options = this.options({
         src: 'src-markdown',
         dest: 'build',
         amp: false,
@@ -52,7 +48,7 @@ function plugin (grunt) {
         metadata: {}
       })
 
-      var metalsmith = new Metalsmith(process.cwd())
+      const metalsmith = new Metalsmith(process.cwd())
 
       metalsmith.source(options.src)
       metalsmith.destination(options.dest)
@@ -165,3 +161,5 @@ function plugin (grunt) {
       })
     })
 }
+
+module.exports = plugin

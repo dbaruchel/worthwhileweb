@@ -1,12 +1,12 @@
 // Great sample file of a gruntfile with metalsmith
 // Also great example of a whole custom static site gen with react
 // https://github.com/dbushell/dbushell.com
-// https://github.com/dbushell/dbushell.com/blob/v8/gruntfile.js
-
+// https://github.com/dbushell/dbushell.com
 module.exports = function (grunt) {
+  // Our custom metalsmith build function
   grunt.loadTasks('tasks')
-  // These plugins provide necessary tasks.
 
+  // These plugins provide necessary tasks.
   grunt.loadNpmTasks('grunt-sass')
   grunt.loadNpmTasks('grunt-contrib-watch')
   grunt.loadNpmTasks('grunt-contrib-copy')
@@ -55,7 +55,7 @@ module.exports = function (grunt) {
         }
       }
     },
-    'grunt-www-metalsmith': {
+    'metalsmith': {
       'all': {
         options: {
           clean: true,
@@ -77,8 +77,8 @@ module.exports = function (grunt) {
     },
     watch: {
       'rebuild-metal': {
-        files: ['Gruntfile.js', 'tasks/*', 'src/*', 'layouts/*'],
-        tasks: ['grunt-www-metalsmith']
+        files: ['gruntfile.js', 'metalsmith.js', 'src/*', 'layouts/*'],
+        tasks: ['metalsmith']
       },
       'rebuild': {
         files: ['metal-build/*'],
@@ -90,9 +90,9 @@ module.exports = function (grunt) {
     }
   })
 
-  grunt.registerTask('metal', ['grunt-www-metalsmith'])
+  grunt.registerTask('metal', ['metalsmith'])
   // define default task
-  grunt.registerTask('default', ['grunt-www-metalsmith', 'clean', 'copy', 'sass', 'browserSync', 'watch'])
+  grunt.registerTask('default', ['metalsmith', 'clean', 'copy', 'sass', 'browserSync', 'watch'])
 
-  grunt.registerTask('build', ['grunt-www-metalsmith', 'clean', 'copy', 'sass'])
+  grunt.registerTask('build', ['metalsmith', 'clean', 'copy', 'sass'])
 }

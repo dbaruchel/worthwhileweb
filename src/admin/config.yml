@@ -2,7 +2,7 @@ backend:
   name: github
   repo: mcoenca/worthwhileweb
   branch: master
-media-folder: 'src/assets'
+media_folder: 'src/assets'
 collections:
   - name: 'initiatives'
     label: 'Initiatives'

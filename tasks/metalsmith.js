@@ -27,6 +27,12 @@ const helpers = {
   },
   link: function (text, exp) {
     return text
+  },
+  getTags (collectionItem) {
+    if (_.isString(collectionItem.tags)) return collectionItem.tags.split(', ')
+    if (_.isArray(collectionItem.tags)) {
+      return collectionItem.tags
+    }
   }
 }
 

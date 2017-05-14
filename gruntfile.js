@@ -78,11 +78,11 @@ module.exports = function (grunt) {
     },
     watch: {
       'rebuild-metal': {
-        files: ['gruntfile.js', 'metalsmith.js', 'src/*', 'layouts/*'],
+        files: ['gruntfile.js', 'tasks/metalsmith.js', 'src/**/*', 'layouts/**/*'],
         tasks: ['metalsmith']
       },
       'rebuild': {
-        files: ['metal-build/*'],
+        files: ['metal-build/**/*'],
         tasks: ['clean', 'copy', 'sass']
       },
       grunt: { files: [

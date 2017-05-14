@@ -17,3 +17,31 @@ collections:
       - {label: 'Short Description', name: 'short_description', widget: 'markdown'}
       - {label: 'Icon', name: 'image', widget: 'image'}
       - {label: 'Body', name: 'body', widget: 'markdown'}
+  - name: 'howtos'
+    label: 'How Tos'
+    folder: 'src/howtos'
+    create: true
+    slug: '{{slug}}'
+    fields:
+      - {label: 'Collection', name: 'collection', widget: 'hidden', default: 'howtos'}
+      - {label: 'Layout', name: 'layout', widget: 'hidden', default: 'howto.pug'}
+      - {label: 'Title', name: 'title', widget: 'string'}
+      - {label: 'Publish Date', name: 'date', widget: 'date'}
+      - {label: 'Short Description', name: 'short_description', widget: 'markdown'}
+      - {label: 'Icon', name: 'image', widget: 'image'}
+      - {label: 'Body', name: 'body', widget: 'markdown'}
+  - name: 'reads'
+    label: 'Reads'
+    folder: 'src/reads'
+    create: true
+    slug: '{{slug}}'
+    fields:
+      - {label: 'Collection', name: 'collection', widget: 'hidden', default: 'reads'}
+      - {label: 'Layout', name: 'layout', widget: 'hidden', default: 'read.pug'}
+      - {label: 'Title', name: 'title', widget: 'string'}
+      - {label: 'Publish Date', name: 'date', widget: 'date'}
+      - {label: 'Short Description', name: 'short_description', widget: 'markdown'}
+      - {label: 'Icon', name: 'image', widget: 'image'}
+      - {label: 'Url', name: 'url', widget: 'string'}
+      - {label: 'Tags', name: 'tags', widget: 'string'}
+      - {label: 'Body', name: 'body', widget: 'markdown'}

@@ -110,7 +110,7 @@ block content
                   .article-title #[a(href=link(read.path))=read.title]
                   .article-description1!=read.short_description
                   .article-tags 
-                    each tag in read.tags
+                    each tag in helpers.getTags(read)
                       span ##{tag}&nbsp;
       .pure-g
         .pure-u-1.pure-u-md-1-3
